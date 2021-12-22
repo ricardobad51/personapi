@@ -11,10 +11,5 @@ public enum PhoneType {
 	MOBILE("Mobile"),
 	COMMERCIAL("Commercial");
 	
-	PhoneType(String string) {
-		this.description = "";
-		// TODO Auto-generated constructor stub
-	}
-
 	private final String description;
 }
