@@ -1,22 +1,19 @@
-package br.com.belemburitiricardo.personapi.dto.mapper;
-
-
-
+package br.com.belemburitiricardo.personapi.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.springframework.web.bind.annotation.Mapping;
+import org.mapstruct.Mapping;
 
 import br.com.belemburitiricardo.personapi.dto.request.PersonDTO;
 import br.com.belemburitiricardo.personapi.entity.Person;
 
-@Mapper(componentModel = "spring")
+@Mapper//(componentModel = "spring")
 public interface PersonMapper {
 	
-	PersonMapper INSTANCE = Mappers.getMapper(PersonMapper.class);
+	PersonMapper INSTANCE = Mappers.getMapper( PersonMapper.class );
 	
 	@Mapping(target = "birthDate", source = "birthDate", dateFormat = "dd-MM-yyyy")
-	Person toModel(PersonDTO personDTO);
+	Person toModel(PersonDTO personDTO); //convensao pra conversão
 	
 	PersonDTO toDTO(Person person);
 	

@@ -1,38 +1,37 @@
 package br.com.belemburitiricardo.personapi.controller;
 
+import br.com.belemburitiricardo.personapi.dto.request.PersonDTO;
+import br.com.belemburitiricardo.personapi.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import br.com.belemburitiricardo.personapi.dto.response.MessageResponseDTO;
 import br.com.belemburitiricardo.personapi.entity.Person;
 import br.com.belemburitiricardo.personapi.repository.PersonRepository;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/people")
 public class PersonController {
 	
-	private PersonRepository personRepository;
+	private PersonService personService;
 	
 	//injeção de dependencia (IoC)
 	
-	@Autowired(required = true)
-	public PersonController(PersonRepository personRepository) {
+	@Autowired
+	public PersonController(PersonService personService) {
 		super();
-		this.personRepository = personRepository;
+		this.personService = personService;
 	}
 
 	
 	@PostMapping
-	public MessageResponseDTO createPerson(@RequestBody Person person) {
+    @ResponseStatus(HttpStatus.CREATED)
+	public MessageResponseDTO createPerson(@RequestBody @Valid PersonDTO personDTO) {
 		
-		Person savedPerson = personRepository.save(person);
-		
-		return MessageResponseDTO
-				.builder()
-				.build();
+		return personService.createPerson(personDTO);
 	}
 
 
