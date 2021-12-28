@@ -1,4 +1,4 @@
-package br.com.belemburitiricardo.personapi.mapper;
+package br.com.belemburitiricardo.personapi.dto.mapper;
 
 import br.com.belemburitiricardo.personapi.dto.request.PersonDTO;
 import br.com.belemburitiricardo.personapi.entity.Person;
@@ -12,7 +12,7 @@ public interface PersonMapper {
 
 	PersonMapper INSTANCE = Mappers.getMapper(PersonMapper.class);
 
-	//@Mapping(target = "birthDate1", source = "birthDate", dateFormat = "dd-MM-yyyy")
+	@Mapping(target = "birthDate1", source = "birthDate", dateFormat = "dd-MM-yyyy")
 	Person toModel(PersonDTO personDTO);
 
 	PersonDTO toDTO(Person person);
