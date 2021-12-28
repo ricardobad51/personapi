@@ -34,7 +34,7 @@ private Long id;
 	@CPF
 	private String cpf;
 	
-	private String birthDate;
+	//private String birthDate;
 	
 	@NotEmpty
 	@Valid
