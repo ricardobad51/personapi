@@ -1,15 +1,15 @@
 # Sistema de Gerenciamento de Pessoa em API REST com Spring Boot
 
-##Projeto construido do zero API Rest com Spring Boot
+## Projeto construido do zero API Rest com Spring Boot
 
-###Estilo arquitetural REST;
+### Estilo arquitetural REST;
 
-###Spring Boot Framework;
+### Spring Boot Framework;
 
-###Spring Data;
+### Spring Data;
 
-###MapStruct;
-###Postman;
-###Banco H2(em memoria);
-###Deploy no Heroku.
-###Pull Request Branch update_feature
+### MapStruct;
+### Postman;
+### Banco H2(em memoria);
+### Deploy no Heroku.
+### Pull Request Branch update_feature
