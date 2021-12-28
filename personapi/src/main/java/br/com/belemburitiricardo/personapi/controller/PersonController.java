@@ -1,16 +1,17 @@
 package br.com.belemburitiricardo.personapi.controller;
 
 import br.com.belemburitiricardo.personapi.dto.request.PersonDTO;
+import br.com.belemburitiricardo.personapi.entity.Person;
+import br.com.belemburitiricardo.personapi.exception.PersonNotFoundException;
 import br.com.belemburitiricardo.personapi.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import br.com.belemburitiricardo.personapi.dto.response.MessageResponseDTO;
-import br.com.belemburitiricardo.personapi.entity.Person;
-import br.com.belemburitiricardo.personapi.repository.PersonRepository;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/people")
@@ -22,7 +23,7 @@ public class PersonController {
 	
 	@Autowired
 	public PersonController(PersonService personService) {
-		super();
+		//super();
 		this.personService = personService;
 	}
 
@@ -32,6 +33,22 @@ public class PersonController {
 	public MessageResponseDTO createPerson(@RequestBody @Valid PersonDTO personDTO) {
 		
 		return personService.createPerson(personDTO);
+	}
+
+	@GetMapping
+	public List<PersonDTO> listAll(){
+		return personService.listAll();
+	}
+
+	@GetMapping("/{id}")
+	public PersonDTO findById(@PathVariable Long id) throws PersonNotFoundException {
+		return personService.findById(id);
+	}
+
+	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void deleteById(@PathVariable Long id) throws PersonNotFoundException {
+		personService.delete(id);
 	}
 
 
